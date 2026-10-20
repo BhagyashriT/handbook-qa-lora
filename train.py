@@ -1,7 +1,9 @@
 """LoRA fine-tune of a seq2seq model for handbook topic classification.
 
-Task framing (classification as generation):
-  input : "classify interview topic: <chunk text>"
+Task framing (classification as generation, FLAN-style instruction prompt):
+  input : "Classify the interview note below into exactly one of these
+           topics: backend, behavioral, dsa, java, learnings, lld, prep,
+           system-design.\n\nNote: <chunk text>\n\nTopic:"
   target: "<label>"                      e.g. "system-design"
 
 Default model: google/flan-t5-base (250M). LoRA keeps trainable params tiny
@@ -24,7 +26,6 @@ import argparse
 import json
 from pathlib import Path
 
-import torch
 from datasets import Dataset
 from peft import LoraConfig, TaskType, get_peft_model
 from transformers import (
