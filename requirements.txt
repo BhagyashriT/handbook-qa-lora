@@ -1,0 +1,9 @@
+# Pinned 2026-10-20. torch CPU wheel is for local validation only;
+# the Colab notebook installs the same versions with the CUDA torch build.
+torch==2.14.1+cpu ; sys_platform != "win32"
+transformers==5.20.2
+peft==0.21.2
+datasets==5.1.0
+scikit-learn==1.9.1
+accelerate==1.15.0
+numpy==2.5.4
